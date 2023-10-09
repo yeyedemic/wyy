@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
-import { Icon } from "@iconify/react";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable prefer-template */
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios';
+import { Icon } from '@iconify/react';
 
 function Mvcontent(props) {
-  let [data, dataList] = useState([]);
+  const [data, dataList] = useState([]);
   useEffect(() => {
-    Axios.get(
-      `https://netease-cloud-music-api-five-roan-88.vercel.app/top/mv?${props.limit}`
-    ).then((res) => {
-      dataList(res.data.data);
-    });
+    Axios.get(`https://netease-cloud-music-api-five-roan-88.vercel.app/top/mv?${props.limit}`).then(
+      (res) => {
+        dataList(res.data.data);
+      },
+    );
   }, []);
 
   return (
@@ -22,38 +25,26 @@ function Mvcontent(props) {
             </div>
             <div className=" flex flex-col h-[56px] justify-evenly">
               <div className=" flex">
-                <span className=" text-[#ff0000] mr-[10px] text-[16px]">
-                  {index + 1}
-                </span>
-                <span className=" text-[15px] font-bold line-clamp-1">
-                  {value.name}
-                </span>
+                <span className=" text-[#ff0000] mr-[10px] text-[16px]">{index + 1}</span>
+                <span className=" text-[15px] font-bold line-clamp-1">{value.name}</span>
               </div>
               <div className=" flex text-[12px]">
-                {value.lastRank == -1 ? (
+                {value.lastRank === -1 ? (
                   <span>new</span>
                 ) : value.lastRank - (index + 1) < 0 ? (
                   <span className=" flex">
-                    <Icon
-                      icon="mdi:menu-down"
-                      className=" text-[20px] text-[red]"
-                    />
-                    {value.lastRank -
-                      (index + 1) -
-                      (value.lastRank - (index + 1)) * 2}
+                    <Icon icon="mdi:menu-down" className=" text-[20px] text-[red]" />
+                    {value.lastRank - (index + 1) - (value.lastRank - (index + 1)) * 2}
                   </span>
                 ) : (
                   <span className=" flex">
-                    <Icon
-                      icon="mdi:menu-up"
-                      className=" text-[20px] text-[green]"
-                    />
+                    <Icon icon="mdi:menu-up" className=" text-[20px] text-[green]" />
                     {value.lastRank - (index + 1)}
                   </span>
                 )}
                 <span className=" ml-[10px]">
                   {value.artists.map((value, index) => {
-                    return index == 0 ? value.name : "/" + value.name;
+                    return index === 0 ? value.name : '/' + value.name;
                   })}
                 </span>
               </div>

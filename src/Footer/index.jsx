@@ -1,47 +1,41 @@
-import React from "react";
-import { Icon } from "@iconify/react";
-import LazyComponent from "@/components/LazyComponent";
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/jsx-curly-brace-presence */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-extraneous-dependencies */
+import React from 'react';
+import { Icon } from '@iconify/react';
+import LazyComponent from '@/components/LazyComponent';
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  NavLink,
-  Navigate,
-} from "react-router-dom";
+// eslint-disable-next-line import/order
+import { BrowserRouter, Routes, Route, NavLink, Navigate } from 'react-router-dom';
 
 function Footer() {
   const tabs = [
     {
-      key: "/viwes",
-      title: "首页",
-      icon: (
-        <Icon icon="ri:netease-cloud-music-fill" style={{ fontSize: "22px" }} />
-      ),
+      key: '/viwes',
+      title: '首页',
+      icon: <Icon icon="ri:netease-cloud-music-fill" style={{ fontSize: '22px' }} />,
     },
     {
-      key: "/Mv",
-      title: "排行榜",
-      icon: (
-        <Icon icon="icon-park-outline:ranking" style={{ fontSize: "22px" }} />
-      ),
+      key: '/Mv',
+      title: '排行榜',
+      icon: <Icon icon="icon-park-outline:ranking" style={{ fontSize: '22px' }} />,
     },
     {
-      key: "/My",
-      title: "我的",
-      icon: <Icon icon="akar-icons:music" style={{ fontSize: "22px" }} />,
+      key: '/My',
+      title: '我的',
+      icon: <Icon icon="akar-icons:music" style={{ fontSize: '22px' }} />,
     },
     {
-      key: "4",
-      title: "关注",
-      icon: <Icon icon="ep:avatar" style={{ fontSize: "22px" }} />,
+      key: '4',
+      title: '关注',
+      icon: <Icon icon="ep:avatar" style={{ fontSize: '22px' }} />,
     },
     {
-      key: "5",
-      title: "社区",
-      icon: (
-        <Icon icon="ant-design:message-outlined" style={{ fontSize: "22px" }} />
-      ),
+      key: '5',
+      title: '社区',
+      icon: <Icon icon="ant-design:message-outlined" style={{ fontSize: '22px' }} />,
     },
   ];
 
@@ -54,16 +48,16 @@ function Footer() {
         <Route path="/My" element={<LazyComponent path="My" />} />
         <Route path="/Login" element={<LazyComponent path="Login" />} />
         <Route path="/search" element={<LazyComponent path="search" />} />
-        <Route path="*" element={""} />
+        <Route path="*" element={''} />
       </Routes>
 
       <div
         className=" flex fixed right-0 left-0 bottom-0 bg-[white] h-[45px]"
         style={
-          window.location.pathname == "/search"
-            ? { display: "none" }
-            : window.location.pathname == "/Login"
-            ? { display: "none" }
+          window.location.pathname === '/search'
+            ? { display: 'none' }
+            : window.location.pathname === '/Login'
+            ? { display: 'none' }
             : null
         }
       >
@@ -73,13 +67,13 @@ function Footer() {
               key={key}
               style={({ isActive }) => {
                 return {
-                  color: isActive ? "#eb4954" : "#9297a1",
+                  color: isActive ? '#eb4954' : '#9297a1',
                   flex: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-evenly",
-                  alignItems: "center",
-                  borderTop: "1px solid #f4f4f4",
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-evenly',
+                  alignItems: 'center',
+                  borderTop: '1px solid #f4f4f4',
                 };
               }}
               to={key}

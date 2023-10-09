@@ -1,12 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
-import { createLoginQrKey, createLoginQrImage, checkLoginQr } from "../service";
-import { Icon } from "@iconify/react";
-import storejs from "storejs";
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable no-return-assign */
+/* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/order */
+import React, { useEffect, useState, useRef } from 'react';
+import { createLoginQrKey, createLoginQrImage, checkLoginQr } from '../service';
+import { Icon } from '@iconify/react';
+import storejs from 'storejs';
 
 function Login() {
-  const unikey = useRef("");
+  const unikey = useRef('');
   const timer = useRef(null);
-  const qr = useRef("");
+  const qr = useRef('');
   const [status, setStatus] = useState();
   const checkScanStatus = () => {
     clearInterval(timer.current);
@@ -19,11 +26,11 @@ function Login() {
             clearInterval(timer);
           }
           if (res.data.code === 803) {
-            storejs.set("cookie", res.data.cookie);
-            window.location.assign("/viwes");
+            storejs.set('cookie', res.data.cookie);
+            window.location.assign('/viwes');
           }
         })
-        .catch((err) => {
+        .catch(() => {
           clearInterval(timer);
         });
     }, 1500);
@@ -39,18 +46,18 @@ function Login() {
   }, []);
 
   function onClick() {
-    window.location.assign("/viwes");
+    window.location.assign('/viwes');
   }
 
   return (
     <div className=" flex flex-col items-center">
-      <div className=" w-[100%] h-[72px] px-[20px] flex justify-between items-center">
+      <div className=" w-[100%] h-[72px] px-[20px] flex justify-between items-center box-border">
         <span onClick={onClick}>
           <Icon
             icon="ep:arrow-up-bold"
             rotate={3}
             style={{
-              fontSize: "20px",
+              fontSize: '20px',
             }}
           />
         </span>
@@ -69,16 +76,10 @@ function Login() {
         </div>
       ) : null}
       {status === 802 ? (
-        <img
-          style={{ width: "150px", height: "150px" }}
-          src="./img/queding.png"
-          alt=""
-        />
+        <img style={{ width: '150px', height: '150px' }} src="./img/queding.png" alt="" />
       ) : null}
       {status === 802 ? (
-        <div className=" text-[12px] text-[#100a09] mt-[37.5px]">
-          扫码成功请点击确认
-        </div>
+        <div className=" text-[12px] text-[#100a09] mt-[37.5px]">扫码成功请点击确认</div>
       ) : (
         <div className=" text-[12px] text-[#100a09] mt-[37.5px]">
           使用
@@ -90,7 +91,7 @@ function Login() {
       <img
         src="https://admirable-jalebi-ce44af.netlify.app/static/bg-login.png"
         alt=""
-        className=" fixed bottom-0 left-0"
+        className=" fixed bottom-0 left-0 right-0 w-[100%]"
       />
     </div>
   );

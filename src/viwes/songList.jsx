@@ -1,26 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Swiper } from "antd-mobile";
-import Axios from "axios";
+/* eslint-disable no-else-return */
+import React, { useState, useEffect } from 'react';
+import { Swiper } from 'antd-mobile';
+import Axios from 'axios';
 
 function SongList() {
-  let [data, updataList] = useState([]);
+  const [data, updataList] = useState([]);
   useEffect(() => {
-    Axios.get(
-      "https://netease-cloud-music-api-five-roan-88.vercel.app/homepage/block/page/"
-    ).then((res) => {
-      updataList(res.data.data.blocks[1].creatives);
-    });
+    Axios.get('https://netease-cloud-music-api-five-roan-88.vercel.app/homepage/block/page/').then(
+      (res) => {
+        updataList(res.data.data.blocks[1].creatives);
+      },
+    );
   }, []);
 
   const [str, setstr] = useState(0);
 
   const items = data.map((value, index) => {
-    if (value.resources.length == 1) {
+    if (value.resources.length === 1) {
       return (
-        <Swiper.Item
-          key={index}
-          style={{ display: "flex", justifyContent: "center" }}
-        >
+        <Swiper.Item key={index} style={{ display: 'flex', justifyContent: 'center' }}>
           <div className=" w-[116px] h-[170px]r">
             <div className=" w-[116px] h-[116px] rounded-[12px] overflow-auto">
               <img
@@ -29,18 +27,13 @@ function SongList() {
                 className=" w-[100%] h-[100%]"
               />
             </div>
-            <div className=" text-[12px]">
-              {value.resources[0].uiElement.mainTitle.title}
-            </div>
+            <div className=" text-[12px]">{value.resources[0].uiElement.mainTitle.title}</div>
           </div>
         </Swiper.Item>
       );
     } else {
       return (
-        <Swiper.Item
-          key={index}
-          style={{ display: "flex", justifyContent: "center" }}
-        >
+        <Swiper.Item key={index} style={{ display: 'flex', justifyContent: 'center' }}>
           <div className=" w-[116px] h-[170px]r">
             <div className=" w-[116px] h-[170px]">
               <Swiper
@@ -48,11 +41,12 @@ function SongList() {
                 indicator={() => null}
                 loop
                 autoplay
+                allowTouchMove={false}
                 style={{
-                  width: "116px",
-                  height: "116px",
-                  borderRadius: "12px",
-                  overflow: "hidden",
+                  width: '116px',
+                  height: '116px',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
                 }}
                 onIndexChange={(index) => setstr(index)}
               >
@@ -70,9 +64,7 @@ function SongList() {
                   );
                 })}
               </Swiper>
-              <div className=" text-[12px]">
-                {value.resources[str].uiElement.mainTitle.title}
-              </div>
+              <div className=" text-[12px]">{value.resources[str].uiElement.mainTitle.title}</div>
             </div>
           </div>
         </Swiper.Item>

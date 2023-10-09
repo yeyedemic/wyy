@@ -1,8 +1,10 @@
+/* eslint-disable prefer-template */
+/* eslint-disable prefer-const */
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
 function Rllist() {
-  let [data, dataList] = useState([]);
+  const [data, dataList] = useState([]);
 
   useEffect(() => {
     Axios.get(
@@ -22,7 +24,7 @@ function Rllist() {
   }
 
   return (
-    <div className=" w-[341px] rounded-[10px] bg-[white] p-[15px] ml-[7.5px]">
+    <div className=" w-[341px] rounded-[10px] bg-[white] p-[15px] ml-[7.5px] box-border">
       <ul>
         {data.map((value, index) => {
           return (

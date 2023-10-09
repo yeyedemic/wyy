@@ -1,24 +1,22 @@
-import React from "react";
-import Mvcontent from "@/Mv/Mvcontent.jsx";
+import React from 'react';
+import Mvcontent from '@/Mv/Mvcontent.jsx';
 
-import { Tabs } from "antd-mobile";
+import { Tabs } from 'antd-mobile';
 
 function Mv() {
   return (
     <div className=" mb-[50px]">
       <div className=" py-[11.25px] px-[15px]">
-        <h1 className=" text-[15.75px] font-bold flex justify-center">
-          MV排行榜
-        </h1>
+        <h1 className=" text-[15.75px] font-bold flex justify-center">MV排行榜</h1>
       </div>
       <Tabs
         activeLineMode="fixed"
         style={{
           padding: 0,
-          color: "#9595a3",
-          "--active-line-color": "red",
-          "--active-title-color": "black",
-          "--fixed-active-line-width": "15px",
+          color: '#9595a3',
+          '--active-line-color': 'red',
+          '--active-title-color': 'black',
+          '--fixed-active-line-width': '15px',
         }}
       >
         <Tabs.Tab title="内地" key="fruits">

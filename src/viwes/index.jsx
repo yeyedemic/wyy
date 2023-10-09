@@ -1,16 +1,17 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/jsx-pascal-case */
-import React from "react";
+import React from 'react';
 
-import Top_input from "@/viwes/top_input.jsx";
-import Banner from "@/viwes/banner.jsx";
-import NavList from "@/viwes/navlist.jsx";
-import SongList from "@/viwes/songList";
-import NewList from "@/viwes/newList";
-import NumList from "@/viwes/numlist";
-import Hot from "@/viwes/hot.jsx";
-import Rllist from "@/viwes/rllist.jsx";
+import Top_input from '@/viwes/top_input.jsx';
+import Banner from '@/viwes/banner.jsx';
+import NavList from '@/viwes/navlist.jsx';
+import SongList from '@/viwes/songList';
+import NewList from '@/viwes/newList';
+import NumList from '@/viwes/numlist';
+import Hot from '@/viwes/hot.jsx';
+import Rllist from '@/viwes/rllist.jsx';
 
-import Title from "@/assembly/title";
+import Title from '@/assembly/title';
 
 function Index() {
   return (

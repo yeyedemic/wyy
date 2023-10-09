@@ -1,13 +1,14 @@
-const path = require("path")
+const path = require('path');
 
 module.exports = {
   webpack: {
     configure: {
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, "./src")
-        }
-      }
-    }
-  }
+          '@': path.resolve(__dirname, './src'),
+        },
+      },
+    },
+    entry: './src/index.jsx',
+  },
 };
