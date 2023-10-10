@@ -14,13 +14,12 @@ function SongList() {
   }, []);
 
   const [str, setstr] = useState(0);
-
   const items = data.map((value, index) => {
-    if (value.resources.length === 1) {
+    if (value.resources.length !== 3) {
       return (
         <Swiper.Item key={index} style={{ display: 'flex', justifyContent: 'center' }}>
           <div className=" w-[116px] h-[170px]r">
-            <div className=" w-[116px] h-[116px] rounded-[12px] overflow-auto">
+            <div className=" w-[116px] h-[116px] rounded-[12px] overflow-hidden">
               <img
                 src={value.resources[0].uiElement.image.imageUrl}
                 alt=""
@@ -31,7 +30,7 @@ function SongList() {
           </div>
         </Swiper.Item>
       );
-    } else {
+    } else if (value.resources.length === 3) {
       return (
         <Swiper.Item key={index} style={{ display: 'flex', justifyContent: 'center' }}>
           <div className=" w-[116px] h-[170px]r">
@@ -57,7 +56,7 @@ function SongList() {
                         <img
                           src={value.uiElement.image.imageUrl}
                           alt=""
-                          className=" w-[100%] h-[100%]"
+                          className=" block w-[100%] h-[100%]"
                         />
                       </div>
                     </Swiper.Item>
