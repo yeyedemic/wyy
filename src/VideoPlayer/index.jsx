@@ -10,7 +10,7 @@ function VideoPlayer() {
   const id = window.location.hash.substring(4);
   const [data, setData] = useState([]);
   const [nameData, setNameData] = useState([]);
-  const [jj, setJJ] = useState([]);
+  // const [jj, setJJ] = useState([]);
   const [head, setHead] = useState([]);
   const videoRef = useRef();
   const bfRef = useRef();
@@ -35,15 +35,15 @@ function VideoPlayer() {
     );
   }, []);
 
-  useEffect(() => {
-    Axios.get(
-      `https://netease-cloud-music-api-five-roan-88.vercel.app/mv/detail/info?mvid=${id}`,
-    ).then((res) => {
-      setJJ(res.data.data);
-    });
-  }, []);
-  console.log(nameData);
-  console.log(jj);
+  // useEffect(() => {
+  //   Axios.get(
+  //     `https://netease-cloud-music-api-five-roan-88.vercel.app/mv/detail/info?mvid=${id}`,
+  //   ).then((res) => {
+  //     setJJ(res.data.data);
+  //   });
+  // }, []);
+  // console.log(nameData);
+  // console.log(jj);
 
   function player() {
     const video = videoRef.current;
