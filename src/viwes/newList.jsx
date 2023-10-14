@@ -19,7 +19,7 @@ function NewList() {
           {value.resources.map((value, index) => {
             return (
               <div key={index} className=" pt-[10px] pl-[7.5px] flex">
-                <div className=" w-[54.4px] h-[54.4px] rounded-[10px] overflow-auto">
+                <div className=" w-[54.4px] h-[54.4px] rounded-[10px] overflow-hidden">
                   <img className=" w=[100%] h-[100%]" src={value.uiElement.image.imageUrl} alt="" />
                 </div>
                 <div className=" ml-[3.75px] pt-[10.69px] overflow-auto">

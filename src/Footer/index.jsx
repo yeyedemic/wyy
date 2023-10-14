@@ -48,17 +48,23 @@ function Footer() {
         <Route path="/My" element={<LazyComponent path="My" />} />
         <Route path="/Login" element={<LazyComponent path="Login" />} />
         <Route path="/search" element={<LazyComponent path="search" />} />
+        <Route path="/Songlist" element={<LazyComponent path="Songlist" />} />
+        <Route path="/VideoPlayer" element={<LazyComponent path="VideoPlayer" />} />
         <Route path="*" element={''} />
       </Routes>
 
       <div
         className=" flex fixed right-0 left-0 bottom-0 bg-[white] h-[45px]"
         style={
-          window.location.pathname === '/search'
-            ? { display: 'none' }
-            : window.location.pathname === '/Login'
-            ? { display: 'none' }
-            : null
+          window.location.pathname === '/viwes'
+            ? null
+            : window.location.pathname === '/Mv'
+            ? null
+            : window.location.pathname === '/My'
+            ? null
+            : window.location.pathname === '/'
+            ? null
+            : { display: 'none' }
         }
       >
         {tabs.map(({ key, title, icon }) => {

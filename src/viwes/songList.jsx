@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-else-return */
 import React, { useState, useEffect } from 'react';
 import { Swiper } from 'antd-mobile';
@@ -15,10 +17,13 @@ function SongList() {
 
   const [str, setstr] = useState(0);
   const items = data.map((value, index) => {
-    if (value.resources.length !== 3) {
+    if (value.resources.length === 1) {
       return (
         <Swiper.Item key={index} style={{ display: 'flex', justifyContent: 'center' }}>
-          <div className=" w-[116px] h-[170px]r">
+          <div
+            className=" w-[116px] h-[170px]"
+            onClick={() => window.location.assign(`/Songlist#id=${value.creativeId}`)}
+          >
             <div className=" w-[116px] h-[116px] rounded-[12px] overflow-hidden">
               <img
                 src={value.resources[0].uiElement.image.imageUrl}
@@ -30,11 +35,16 @@ function SongList() {
           </div>
         </Swiper.Item>
       );
-    } else if (value.resources.length === 3) {
+    } else {
       return (
         <Swiper.Item key={index} style={{ display: 'flex', justifyContent: 'center' }}>
           <div className=" w-[116px] h-[170px]r">
-            <div className=" w-[116px] h-[170px]">
+            <div
+              className=" w-[116px] h-[170px]"
+              onClick={() =>
+                window.location.assign(`/Songlist#id=${value.resources[str].resourceId}`)
+              }
+            >
               <Swiper
                 direction="vertical"
                 indicator={() => null}

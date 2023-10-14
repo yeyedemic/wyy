@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prefer-template */
@@ -19,7 +21,11 @@ function Mvcontent(props) {
     <div>
       {data.map((value, index) => {
         return (
-          <div key={index} className=" px-[3px]">
+          <div
+            key={index}
+            className=" px-[3px]"
+            onClick={() => window.location.assign(`/VideoPlayer#id=${value.id}`)}
+          >
             <div className=" h-[195px] rounded-[12px] m-[auto] mb-[10px] overflow-hidden">
               <img className=" w-[100%] h-[100%]" src={value.cover} alt="" />
             </div>

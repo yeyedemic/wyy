@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { Swiper } from 'antd-mobile';
+import { Icon } from '@iconify/react';
 
 export default function Hot() {
   const [data, dataList] = useState([]);
@@ -20,7 +21,9 @@ export default function Hot() {
         style={{ backgroundColor: 'rgb(148, 148, 148)' }}
       >
         <div className=" flex items-center">
-          <div className=" w-[15px] h-[15px] bg-[white]"></div>
+          <div className=" w-[15px] h-[15px] text-[white]">
+            <Icon icon="ant-design:message-filled" />
+          </div>
           <div className=" text-[white] text-[15px]">{value.user.nickname}</div>
         </div>
         <p className=" text-[12px] text-[#d7d7d7]">484万热度</p>
