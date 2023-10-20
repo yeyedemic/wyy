@@ -84,6 +84,7 @@ function Songlist() {
                     className=" w-[105px] mr-[9.38px] flex-shrink-0"
                     key={index}
                     onClick={() => {
+                      window.location.assign(`/Songlist#id=${value.id}`);
                       setId(value.id);
                       toggle();
                     }}

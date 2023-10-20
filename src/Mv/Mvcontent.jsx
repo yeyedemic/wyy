@@ -48,7 +48,7 @@ function Mvcontent(props) {
                     {value.lastRank - (index + 1)}
                   </span>
                 )}
-                <span className=" ml-[10px]">
+                <span className=" ml-[10px] whitespace-nowrap line-clamp-1">
                   {value.artists.map((value, index) => {
                     return index === 0 ? value.name : '/' + value.name;
                   })}
