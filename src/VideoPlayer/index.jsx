@@ -22,21 +22,20 @@ function VideoPlayer() {
   const [ctime, setCtime] = useState(0);
   const [dtime, setDtime] = useState(0);
 
-  const usenMount = (callback) => {
-    useEffect(() => callback, []);
-  };
+  const [Int, setInt] = useState(true);
 
-  const useInterval = (callback, interval = 1000) => {
-    const timer = useRef(null);
-    useEffect(() => {
-      timer.current = setInterval(callback, interval);
-    }, []);
-    usenMount(() => clearInterval(timer.current));
-  };
+  const timer = useRef(null);
 
-  useInterval(() => {
-    setW((videoRef.current.currentTime * 100) / videoRef.current.duration);
-  }, 1000);
+  useEffect(() => {
+    if (Int) {
+      timer.current = setInterval(() => {
+        setW((videoRef.current.currentTime * 100) / videoRef.current.duration);
+      }, 1000);
+    }
+    if (!Int) {
+      clearInterval(timer.current);
+    }
+  }, [Int]);
 
   const numbf = (num) => {
     return num > 100000000
@@ -209,23 +208,28 @@ function VideoPlayer() {
           className=" py-[7px] overflow-hidden"
           onTouchStart={(e) => {
             setW(e.changedTouches[0].clientX / (window.innerWidth / 100));
-            videoRef.current.currentTime =
-              (e.changedTouches[0].clientX / window.innerWidth) * videoRef.current.duration;
             timeNow();
+            setInt(false);
           }}
           onTouchMove={(e) => {
-            if (e.changedTouches[0].clientX < window.innerWidth) {
+            if (
+              e.changedTouches[0].clientX <= window.innerWidth &&
+              e.changedTouches[0].clientX >= 0
+            ) {
               setW(e.changedTouches[0].clientX / (window.innerWidth / 100));
-              videoRef.current.currentTime =
-                (e.changedTouches[0].clientX / window.innerWidth) * videoRef.current.duration;
               timeRef.current.style.display = 'flex';
               xqRef.current.style.display = 'none';
-              setCtime(videoRef.current.currentTime);
+              setCtime(
+                e.changedTouches[0].clientX / (window.innerWidth / videoRef.current.duration),
+              );
             }
           }}
-          onTouchEnd={() => {
+          onTouchEnd={(e) => {
+            videoRef.current.currentTime =
+              (e.changedTouches[0].clientX / window.innerWidth) * videoRef.current.duration;
             timeRef.current.style.display = 'none';
             xqRef.current.style.display = 'flex';
+            setInt(true);
           }}
         >
           <div className=" w-[100vw] h-[4px] bg-[#5f5f5f]">

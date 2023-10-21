@@ -50,6 +50,7 @@ function Footer() {
         <Route path="/search" element={<LazyComponent path="search" />} />
         <Route path="/Songlist" element={<LazyComponent path="Songlist" />} />
         <Route path="/VideoPlayer" element={<LazyComponent path="VideoPlayer" />} />
+        <Route path="/AudioPlayer" element={<LazyComponent path="AudioPlayer" />} />
         <Route path="*" element={''} />
       </Routes>
 

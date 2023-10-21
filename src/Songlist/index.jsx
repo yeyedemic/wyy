@@ -24,17 +24,11 @@ function Songlist() {
         setDetails(res.data.playlist.creator);
         setTag(res.data.playlist.tags);
       });
-  }, [id]);
-
-  useEffect(() => {
     axios
       .get(`https://netease-cloud-music-api-five-roan-88.vercel.app/playlist/track/all?id=${id}`)
       .then((res) => {
         setList(res.data.songs);
       });
-  }, [id]);
-
-  useEffect(() => {
     axios
       .get(`https://netease-cloud-music-api-five-roan-88.vercel.app/related/playlist?id=${id}`)
       .then((res) => {
@@ -203,7 +197,11 @@ function Songlist() {
         <div>
           {list.map((value, index) => {
             return (
-              <div className=" h-[52.53px] flex items-center text-[#bfbfbf]" key={index}>
+              <div
+                onClick={() => window.location.assign(`/AudioPlayer#id=${value.id}`)}
+                className=" h-[52.53px] flex items-center text-[#bfbfbf]"
+                key={index}
+              >
                 <div className=" w-[15px] h-[18px] mr-[13.2px] text-[12px]">{index + 1}</div>
                 <div className=" w-[240px]">
                   <div className=" text-[13.5px] text-[black] w-[187.6px] line-clamp-1">
